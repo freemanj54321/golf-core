@@ -1,0 +1,27 @@
+{
+  "name": "golf-core-functions",
+  "description": "Golf Core Cloud Functions",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "build": "tsc"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "axios": "^1.13.5",
+    "dotenv": "^17.3.1",
+    "firebase-admin": "^12.0.0",
+    "firebase-functions": "^7.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "private": true
+}

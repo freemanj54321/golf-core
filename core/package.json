@@ -1,0 +1,42 @@
+{
+  "name": "@freemanj54321/golf-core",
+  "version": "1.0.0",
+  "description": "Golf data services and UI components for fantasy golf apps",
+  "main": "./dist/golf-core.umd.js",
+  "module": "./dist/golf-core.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/golf-core.es.js",
+      "require": "./dist/golf-core.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite build --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "firebase": "^10.0.0 || ^11.0.0 || ^12.0.0",
+    "@tanstack/react-query": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "lucide-react": "^0.511.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.4.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.511.0"
+  }
+}

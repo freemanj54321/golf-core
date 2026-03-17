@@ -1,0 +1,20 @@
+node_modules/
+functions/lib/
+functions/node_modules/
+admin-app/dist/
+admin-app/node_modules/
+core/dist/
+core/node_modules/
+scripts/node_modules/
+.env
+.env.local
+*.local
+dist/
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Service account credentials (NEVER commit these)
+*-service-account.json
+*-credentials.json

@@ -1,0 +1,39 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "SyncLogs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "type", "order": "ASCENDING" },
+        { "fieldPath": "timestamp", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "Tournament-Results",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tournId", "order": "ASCENDING" },
+        { "fieldPath": "year", "order": "ASCENDING" },
+        { "fieldPath": "roundId", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "Scorecard-Sync",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tournId", "order": "ASCENDING" },
+        { "fieldPath": "year", "order": "ASCENDING" },
+        { "fieldPath": "roundId", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "TeeTimes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tournId", "order": "ASCENDING" },
+        { "fieldPath": "year", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

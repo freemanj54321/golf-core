@@ -1,0 +1,17 @@
+{
+  "name": "golf-core-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "migrate": "ts-node migrate-from-mezzters.ts",
+    "verify": "ts-node verify-migration.ts"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
