@@ -4,7 +4,8 @@
       "Bash(firebase projects:list)",
       "Bash(firebase use:*)",
       "Bash(firebase hosting:sites:list)",
-      "Bash(firebase init:*)"
+      "Bash(firebase init:*)",
+      "Bash(npm install:*)"
     ]
   }
 }
