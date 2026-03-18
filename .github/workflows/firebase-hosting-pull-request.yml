@@ -20,8 +20,13 @@ jobs:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: |
+            core/package-lock.json
             admin-app/package-lock.json
             functions/package-lock.json
+
+      - name: Install core dependencies
+        working-directory: core
+        run: npm ci
 
       - name: Install admin-app dependencies
         working-directory: admin-app
