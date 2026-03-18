@@ -17,14 +17,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
-          cache-dependency-path: |
-            functions/package-lock.json
-            admin-app/package-lock.json
 
       - name: Install admin-app dependencies
         working-directory: admin-app
-        run: npm ci
+        run: npm install
 
       - name: Build admin-app
         working-directory: admin-app
@@ -32,7 +28,7 @@ jobs:
 
       - name: Install functions dependencies
         working-directory: functions
-        run: npm ci
+        run: npm install
 
       - name: Build functions
         working-directory: functions
