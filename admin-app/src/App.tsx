@@ -6,7 +6,7 @@ import { GolfCoreProvider } from '@golf-core/contexts/GolfCoreContext';
 import { auth, app } from './firebase';
 import AutoSyncPage from './pages/AutoSyncPage';
 import WebhookManagementPage from './pages/WebhookManagementPage';
-import { Server, Webhook, LogOut } from 'lucide-react';
+import { Server, Webhook, LogOut, Lock, ArrowRight } from 'lucide-react';
 
 const queryClient = new QueryClient();
 
@@ -50,23 +50,43 @@ const LoginPage: React.FC<{ onLogin: (email: string, password: string) => Promis
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-950">
-      <div className="bg-white rounded-xl shadow-xl p-8 w-full max-w-sm">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6 text-center">Golf Core Admin</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500" />
+      <form onSubmit={handleSubmit} className="w-full max-w-xs">
+        <div className="relative group mb-0.5">
+          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-green-300 group-focus-within:text-yellow-400 transition-colors" />
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+            className="w-full pl-10 pr-4 py-3 rounded-t-lg bg-green-950/80 border-b-2 border-green-600 text-white placeholder-green-400/50 focus:outline-none focus:bg-green-900/90 focus:border-yellow-400 transition-all text-center tracking-widest backdrop-blur-sm"
+          />
+        </div>
+        <div className="relative group mb-0.5">
+          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-green-300 group-focus-within:text-yellow-400 transition-colors" />
+          <input
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+            className="w-full pl-10 pr-4 py-3 bg-green-950/80 border-b-2 border-green-600 text-white placeholder-green-400/50 focus:outline-none focus:bg-green-900/90 focus:border-yellow-400 transition-all text-center tracking-widest backdrop-blur-sm"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-yellow-400 text-green-900 font-bold py-3 rounded-b-lg hover:bg-yellow-300 transition-colors shadow-lg uppercase tracking-wider text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        >
+          {loading ? 'Signing in...' : 'Sign In'}
+          {!loading && <ArrowRight className="h-4 w-4" />}
+        </button>
+        {error && (
+          <div className="mt-4 bg-red-900/80 text-red-200 text-sm py-2 px-4 rounded border border-red-800/50 backdrop-blur-sm">
+            {error}
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500" />
-          </div>
-          {error && <p className="text-sm text-red-600 bg-red-50 p-2 rounded">{error}</p>}
-          <button type="submit" disabled={loading} className="w-full py-2 bg-green-700 text-white font-semibold rounded hover:bg-green-800 transition disabled:opacity-50">
-            {loading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
-      </div>
+        )}
+      </form>
     </div>
   );
 };
