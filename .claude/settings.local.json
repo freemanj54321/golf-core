@@ -5,7 +5,13 @@
       "Bash(firebase use:*)",
       "Bash(firebase hosting:sites:list)",
       "Bash(firebase init:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Read(//c/Users/freem/OneDrive/Documents/Dev Learning/**)",
+      "Bash(find 'c:/Users/freem/OneDrive/Documents/Dev Learning/Mezzters' -type f \\\\\\(-name *.tsx -o -name *.jsx -o -name *.ts -o -name *.js \\\\\\))",
+      "Bash(grep -r \"login\\\\|Login\\\\|signin\\\\|SignIn\" 'c:/Users/freem/OneDrive/Documents/Dev Learning/Mezzters/mezztersv2/src' --include=*.tsx --include=*.jsx)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node_modules/.bin/tsc --noEmit)"
     ]
   }
 }
