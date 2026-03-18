@@ -5,7 +5,9 @@
   },
   "functions": {
     "source": "functions",
-    "predeploy": ["npm --prefix functions run build"]
+    "predeploy": [
+      "npm --prefix functions run build"
+    ]
   },
   "hosting": {
     "public": "admin-app/dist",
