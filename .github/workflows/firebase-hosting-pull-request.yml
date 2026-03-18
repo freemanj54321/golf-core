@@ -13,6 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: |
+            admin-app/package-lock.json
+            functions/package-lock.json
+
+      - name: Install admin-app dependencies
+        working-directory: admin-app
+        run: npm ci
+
+      - name: Build admin-app
+        working-directory: admin-app
+        run: npm run build
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

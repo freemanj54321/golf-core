@@ -17,10 +17,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: |
+            admin-app/package-lock.json
+            functions/package-lock.json
 
       - name: Install admin-app dependencies
         working-directory: admin-app
-        run: npm install
+        run: npm ci
 
       - name: Build admin-app
         working-directory: admin-app
@@ -28,7 +32,7 @@ jobs:
 
       - name: Install functions dependencies
         working-directory: functions
-        run: npm install
+        run: npm ci
 
       - name: Build functions
         working-directory: functions
@@ -38,7 +42,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GOLF_APPS_CORE }}
           projectId: golf-apps-core
           channelId: live
         env:
