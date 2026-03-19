@@ -120,7 +120,10 @@ const App: React.FC = () => {
   const [loginError, setLoginError] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (u) => {
+    const unsubscribe = onAuthStateChanged(auth, async (u) => {
+      if (u) {
+        await u.getIdToken(true); // force-refresh so custom claims (admin) are current
+      }
       setUser(u);
       setAuthLoading(false);
     });
