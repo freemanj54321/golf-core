@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "migrate": "ts-node migrate-from-mezzters.ts",
-    "verify": "ts-node verify-migration.ts"
+    "verify": "ts-node verify-migration.ts",
+    "set-admin": "ts-node --esm setAdmin.ts"
   },
   "dependencies": {
     "firebase-admin": "^12.0.0"
