@@ -3,25 +3,13 @@ import { BrowserRouter, Routes, Route, Link, useLocation, Navigate } from 'react
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GolfCoreProvider } from '@golf-core/contexts/GolfCoreContext';
-import { auth, app } from './firebase';
+import { auth, db } from './firebase';
 import AutoSyncPage from './pages/AutoSyncPage';
 import WebhookManagementPage from './pages/WebhookManagementPage';
 import { Server, Webhook, LogOut, Lock, ArrowRight } from 'lucide-react';
 
 const queryClient = new QueryClient();
 
-// Build the golf-core Firebase config from the same env vars the admin app uses
-const getGolfCoreConfig = () => {
-  const env = (import.meta as any).env;
-  return {
-    apiKey: env?.VITE_FIREBASE_API_KEY || '',
-    authDomain: env?.VITE_FIREBASE_AUTH_DOMAIN || '',
-    projectId: env?.VITE_FIREBASE_PROJECT_ID || '',
-    storageBucket: env?.VITE_FIREBASE_STORAGE_BUCKET || '',
-    messagingSenderId: env?.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
-    appId: env?.VITE_FIREBASE_APP_ID || '',
-  };
-};
 
 const NavLink: React.FC<{ to: string; children: React.ReactNode; icon: React.ReactNode }> = ({ to, children, icon }) => {
   const location = useLocation();
@@ -152,7 +140,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <GolfCoreProvider firebaseConfig={getGolfCoreConfig()}>
+    <GolfCoreProvider db={db}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <AdminLayout user={user} onSignOut={handleSignOut}>

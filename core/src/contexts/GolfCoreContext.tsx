@@ -11,12 +11,16 @@ interface GolfCoreContextType {
 const GolfCoreContext = createContext<GolfCoreContextType | undefined>(undefined);
 
 export interface GolfCoreProviderProps {
-  firebaseConfig: GolfCoreFirebaseConfig;
+  firebaseConfig?: GolfCoreFirebaseConfig;
+  db?: Firestore;
   children: ReactNode;
 }
 
-export const GolfCoreProvider: React.FC<GolfCoreProviderProps> = ({ firebaseConfig, children }) => {
-  const db = initGolfCoreFirebase(firebaseConfig);
+export const GolfCoreProvider: React.FC<GolfCoreProviderProps> = ({ firebaseConfig, db: dbProp, children }) => {
+  if (!dbProp && !firebaseConfig) {
+    throw new Error('[golf-core] GolfCoreProvider requires either a db or firebaseConfig prop');
+  }
+  const db = dbProp ?? initGolfCoreFirebase(firebaseConfig!);
   return (
     <GolfCoreContext.Provider value={{ db }}>
       {children}
