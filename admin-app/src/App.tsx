@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation, Navigate } from 'react
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from 'firebase/auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GolfCoreProvider } from '@golf-core/contexts/GolfCoreContext';
+import { useAutosyncSettings } from '@golf-core/hooks/useAutosyncSettings';
 import { auth, db } from './firebase';
 import AutoSyncPage from './pages/AutoSyncPage';
 import WebhookManagementPage from './pages/WebhookManagementPage';
@@ -10,6 +11,25 @@ import TournamentMonitorPage from './pages/TournamentMonitorPage';
 import { Server, Webhook, LogOut, Lock, ArrowRight, Activity } from 'lucide-react';
 
 const queryClient = new QueryClient();
+
+const YEAR_LIST = Array.from(
+  { length: new Date().getFullYear() - 2010 + 1 },
+  (_, i) => new Date().getFullYear() - i
+);
+
+const NavYearSelector: React.FC = () => {
+  const { settings, updateSettings } = useAutosyncSettings();
+  const currentYear = new Date().getFullYear();
+  return (
+    <select
+      value={settings.activeYear || currentYear}
+      onChange={e => updateSettings({ activeYear: parseInt(e.target.value) })}
+      className="text-sm bg-green-800 text-green-100 border border-green-600 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-green-400 cursor-pointer"
+    >
+      {YEAR_LIST.map(y => <option key={y} value={y}>{y}</option>)}
+    </select>
+  );
+};
 
 
 const NavLink: React.FC<{ to: string; children: React.ReactNode; icon: React.ReactNode }> = ({ to, children, icon }) => {
@@ -93,6 +113,7 @@ const AdminLayout: React.FC<{ user: User; onSignOut: () => void; children: React
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <NavYearSelector />
           <span className="text-sm text-green-300">{user.email}</span>
           <button onClick={onSignOut} className="flex items-center gap-1 text-sm text-green-300 hover:text-white transition">
             <LogOut className="w-4 h-4" />Sign out

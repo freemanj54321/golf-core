@@ -318,8 +318,16 @@ const AutoSyncPage: React.FC = () => {
             Configure background RapidAPI synchronization for the current active year ({year}).
           </p>
         </div>
-        <div className="hidden sm:block text-lg font-medium text-gray-600 bg-gray-100 px-4 py-2 rounded-lg">
-          Active Year: <span className="text-green-800 font-bold">{year}</span>
+        <div className="hidden sm:flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-lg">
+          <span className="text-sm font-medium text-gray-600">Active Year:</span>
+          <select
+            value={year}
+            onChange={e => updateSettings({ activeYear: parseInt(e.target.value) })}
+            className="text-sm font-bold text-green-800 bg-transparent border-none focus:outline-none focus:ring-0 cursor-pointer"
+          >
+            {Array.from({ length: new Date().getFullYear() - 2010 + 1 }, (_, i) => new Date().getFullYear() - i)
+              .map(y => <option key={y} value={y}>{y}</option>)}
+          </select>
         </div>
       </div>
 
