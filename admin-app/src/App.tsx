@@ -6,7 +6,8 @@ import { GolfCoreProvider } from '@golf-core/contexts/GolfCoreContext';
 import { auth, db } from './firebase';
 import AutoSyncPage from './pages/AutoSyncPage';
 import WebhookManagementPage from './pages/WebhookManagementPage';
-import { Server, Webhook, LogOut, Lock, ArrowRight } from 'lucide-react';
+import TournamentMonitorPage from './pages/TournamentMonitorPage';
+import { Server, Webhook, LogOut, Lock, ArrowRight, Activity } from 'lucide-react';
 
 const queryClient = new QueryClient();
 
@@ -87,6 +88,7 @@ const AdminLayout: React.FC<{ user: User; onSignOut: () => void; children: React
           <span className="text-lg font-bold text-white">⛳ Golf Core</span>
           <div className="flex gap-2">
             <NavLink to="/autosync" icon={<Server className="w-4 h-4" />}>Auto-Sync</NavLink>
+            <NavLink to="/monitor" icon={<Activity className="w-4 h-4" />}>Tournament</NavLink>
             <NavLink to="/webhooks" icon={<Webhook className="w-4 h-4" />}>Webhooks</NavLink>
           </div>
         </div>
@@ -147,6 +149,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Navigate to="/autosync" replace />} />
               <Route path="/autosync" element={<AutoSyncPage />} />
+              <Route path="/monitor" element={<TournamentMonitorPage />} />
               <Route path="/webhooks" element={<WebhookManagementPage />} />
             </Routes>
           </AdminLayout>
