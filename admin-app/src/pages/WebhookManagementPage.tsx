@@ -175,7 +175,7 @@ const WebhookManagementPage: React.FC = () => {
                 value={newConsumerId}
                 onChange={e => setNewConsumerId(e.target.value)}
                 placeholder="e.g. mezzters, afi"
-                className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500 text-gray-900"
               />
             </div>
             <div>
@@ -185,7 +185,7 @@ const WebhookManagementPage: React.FC = () => {
                 value={newUrl}
                 onChange={e => setNewUrl(e.target.value)}
                 placeholder="https://us-central1-your-project.cloudfunctions.net/golfCoreWebhookHandler"
-                className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500 text-gray-900"
               />
             </div>
             <div>
@@ -195,18 +195,18 @@ const WebhookManagementPage: React.FC = () => {
                   type="text"
                   value={newSecret}
                   onChange={e => setNewSecret(e.target.value)}
-                  className="flex-1 p-2 border border-gray-300 rounded font-mono text-sm focus:ring-green-500 focus:border-green-500"
+                  className="flex-1 p-2 border border-gray-300 rounded font-mono text-sm focus:ring-green-500 focus:border-green-500 text-gray-900"
                 />
                 <button
                   onClick={() => copySecret(newSecret)}
-                  className="px-3 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 transition text-sm"
+                  className="px-3 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 transition text-sm text-gray-700"
                   title="Copy secret"
                 >
                   {copiedSecret ? '✓' : <Copy className="w-4 h-4" />}
                 </button>
                 <button
                   onClick={() => setNewSecret(generateSecret())}
-                  className="px-3 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 transition text-sm"
+                  className="px-3 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 transition text-sm text-gray-700"
                   title="Regenerate"
                 >
                   <RefreshCw className="w-4 h-4" />
@@ -218,7 +218,7 @@ const WebhookManagementPage: React.FC = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">Subscribed Events</label>
               <div className="grid grid-cols-2 gap-2">
                 {ALL_EVENTS.map(event => (
-                  <label key={event} className="flex items-center gap-2 text-sm cursor-pointer">
+                  <label key={event} className="flex items-center gap-2 text-sm cursor-pointer text-gray-700">
                     <input
                       type="checkbox"
                       checked={newEvents.includes(event)}

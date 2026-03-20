@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
+import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { useQuery } from '@tanstack/react-query';
 import { Search, ChevronDown, ChevronUp, ChevronsLeft, ChevronsRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useGolfCoreDb } from '../contexts/GolfCoreContext';
@@ -33,8 +33,7 @@ export const RankingsPage: React.FC = () => {
       const q = query(
         collection(db, 'golf-rankings'),
         where('year', '==', year),
-        orderBy('rank', 'asc'),
-        limit(500)
+        orderBy('rank', 'asc')
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map(doc => {
