@@ -8,5 +8,6 @@ export default defineConfig({
     alias: {
       '@golf-core': resolve(__dirname, '../core/src'),
     },
+    dedupe: ['firebase', 'react', 'react-dom'],
   },
 });
