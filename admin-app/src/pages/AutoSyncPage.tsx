@@ -328,7 +328,7 @@ const AutoSyncPage: React.FC = () => {
         <div className="space-y-8">
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold">Target Synchronization Filter</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Target Synchronization Filter</h2>
               {!settingsLoading && (
                 <div className="flex rounded-md border border-gray-300 overflow-hidden text-sm">
                   <button
@@ -463,7 +463,7 @@ const AutoSyncPage: React.FC = () => {
 
         {/* Server Autosync Column */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-2xl font-bold mb-4">Server Autosync Settings</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">Server Autosync Settings</h2>
           <p className="text-gray-600 mb-4 text-sm">Configure Cloud Functions schedule. Warning: Frequent syncs consume RapidAPI quota.</p>
           {settingsLoading ? (
             <p className="text-gray-500 italic">Loading settings...</p>
@@ -482,9 +482,9 @@ const AutoSyncPage: React.FC = () => {
 
       {logs.length > 0 && (
         <div className="bg-white rounded-lg shadow p-6 mt-8">
-          <h3 className="text-xl font-bold mb-4">Manual Sync Log Output</h3>
+          <h3 className="text-xl font-bold mb-4 text-gray-900">Manual Sync Log Output</h3>
           <div className="bg-gray-100 p-4 rounded-lg max-h-60 overflow-y-auto font-mono text-sm">
-            {logs.map((log, index) => <p key={index} className="whitespace-pre-wrap">{log}</p>)}
+            {logs.map((log, index) => <p key={index} className="whitespace-pre-wrap text-gray-800">{log}</p>)}
           </div>
         </div>
       )}

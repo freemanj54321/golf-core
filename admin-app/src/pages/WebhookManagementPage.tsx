@@ -166,7 +166,7 @@ const WebhookManagementPage: React.FC = () => {
       {/* Add Form */}
       {showAddForm && (
         <div className="bg-white rounded-lg shadow p-6 mb-8 border border-blue-200">
-          <h2 className="text-xl font-bold mb-4">Register New Consumer</h2>
+          <h2 className="text-xl font-bold mb-4 text-gray-900">Register New Consumer</h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Consumer ID</label>
