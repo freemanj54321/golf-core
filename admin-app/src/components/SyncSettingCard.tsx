@@ -168,7 +168,7 @@ const SyncSettingCard: React.FC<SyncSettingCardProps> = ({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white text-gray-900 border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex justify-between items-center mb-4">
         <span className="font-bold text-gray-800 text-lg">{label}</span>
         <div className="flex items-center space-x-4">

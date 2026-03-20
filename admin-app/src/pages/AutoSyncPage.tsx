@@ -326,7 +326,7 @@ const AutoSyncPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Sync Controls Column */}
         <div className="space-y-8">
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white text-gray-900 rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold text-gray-900">Target Synchronization Filter</h2>
               {!settingsLoading && (
@@ -380,7 +380,7 @@ const AutoSyncPage: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Select Tournament</label>
                     <select
-                      className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500"
+                      className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500 bg-white text-gray-900"
                       value={selectedTournamentId}
                       onChange={(e) => setSelectedTournamentId(e.target.value)}
                     >
@@ -396,7 +396,7 @@ const AutoSyncPage: React.FC = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Select Round</label>
                     <select
-                      className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500"
+                      className="w-full p-2 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500 bg-white text-gray-900"
                       value={selectedRound}
                       onChange={(e) => setSelectedRound(e.target.value)}
                     >
@@ -431,7 +431,7 @@ const AutoSyncPage: React.FC = () => {
           </div>
 
           {/* Danger Zone */}
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white text-gray-900 rounded-lg shadow p-6">
             <div className="border-t pt-6 bg-red-50 -mx-6 px-6 pb-6 -mb-6 rounded-b-lg border-red-100">
               <h3 className="font-bold mb-2 text-red-800">Danger Zone / Recovery</h3>
               <p className="text-sm text-red-600 mb-4">
@@ -462,7 +462,7 @@ const AutoSyncPage: React.FC = () => {
         </div>
 
         {/* Server Autosync Column */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white text-gray-900 rounded-lg shadow p-6">
           <h2 className="text-2xl font-bold mb-4 text-gray-900">Server Autosync Settings</h2>
           <p className="text-gray-600 mb-4 text-sm">Configure Cloud Functions schedule. Warning: Frequent syncs consume RapidAPI quota.</p>
           {settingsLoading ? (
@@ -481,7 +481,7 @@ const AutoSyncPage: React.FC = () => {
       </div>
 
       {logs.length > 0 && (
-        <div className="bg-white rounded-lg shadow p-6 mt-8">
+        <div className="bg-white text-gray-900 rounded-lg shadow p-6 mt-8">
           <h3 className="text-xl font-bold mb-4 text-gray-900">Manual Sync Log Output</h3>
           <div className="bg-gray-100 p-4 rounded-lg max-h-60 overflow-y-auto font-mono text-sm">
             {logs.map((log, index) => <p key={index} className="whitespace-pre-wrap text-gray-800">{log}</p>)}

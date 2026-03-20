@@ -20,7 +20,7 @@ const ITEMS_PER_PAGE = 50;
 
 export const RankingsPage: React.FC = () => {
   const db = useGolfCoreDb();
-  const { year } = useYear();
+  const { year, setYear, availableYears } = useYear();
   const [filteredRankings, setFilteredRankings] = useState<GolfRanking[]>([]);
   const [currentRankings, setCurrentRankings] = useState<GolfRanking[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -140,7 +140,14 @@ export const RankingsPage: React.FC = () => {
         </h2>
         <p className="mt-1 text-sm text-yellow-200/80 uppercase tracking-wider font-bold">{year} Season</p>
       </div>
-      <div className="flex justify-end mb-4 pr-2">
+      <div className="flex items-center justify-between mb-4 px-2">
+        <select
+          value={year}
+          onChange={e => setYear(Number(e.target.value))}
+          className="pl-3 pr-8 py-2 border rounded-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-green-700 shadow-sm text-gray-900 font-semibold"
+        >
+          {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
+        </select>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
           <input
@@ -148,7 +155,7 @@ export const RankingsPage: React.FC = () => {
             placeholder="Search player..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-2 border rounded-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-green-700 w-64 shadow-sm"
+            className="pl-10 pr-4 py-2 border rounded-full bg-gray-50 focus:bg-white focus:ring-2 focus:ring-green-700 w-64 shadow-sm text-gray-900"
           />
         </div>
       </div>

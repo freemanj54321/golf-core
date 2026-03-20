@@ -14,7 +14,12 @@ interface YearProviderProps {
   children: ReactNode;
 }
 
-const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021];
+const MIN_YEAR = 2010;
+const buildAvailableYears = (): number[] => {
+  const current = new Date().getFullYear();
+  return Array.from({ length: current - MIN_YEAR + 1 }, (_, i) => current - i);
+};
+const AVAILABLE_YEARS = buildAvailableYears();
 
 const getDefaultYear = (): number => {
   const now = new Date().getFullYear();

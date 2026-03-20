@@ -165,7 +165,7 @@ const WebhookManagementPage: React.FC = () => {
 
       {/* Add Form */}
       {showAddForm && (
-        <div className="bg-white rounded-lg shadow p-6 mb-8 border border-blue-200">
+        <div className="bg-white text-gray-900 rounded-lg shadow p-6 mb-8 border border-blue-200">
           <h2 className="text-xl font-bold mb-4 text-gray-900">Register New Consumer</h2>
           <div className="space-y-4">
             <div>
@@ -256,7 +256,7 @@ const WebhookManagementPage: React.FC = () => {
       ) : (
         <div className="space-y-4">
           {registrations.map(reg => (
-            <div key={reg.id} className="bg-white rounded-lg shadow p-5">
+            <div key={reg.id} className="bg-white text-gray-900 rounded-lg shadow p-5">
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h3 className="text-lg font-bold text-gray-900">{reg.consumerId}</h3>
