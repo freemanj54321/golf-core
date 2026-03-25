@@ -107,7 +107,7 @@ export const MastersResults: React.FC<MastersResultsProps> = ({ year, tournId, t
 
           if (!fieldSnapshot.empty) {
             const rankMap = new Map<string, number>();
-            const rankingsSnapshot = await getDocs(query(collection(db, 'golf-rankings')));
+            const rankingsSnapshot = await getDocs(query(collection(db, 'golf-rankings'), where('year', '==', year)));
             rankingsSnapshot.docs.forEach(doc => {
               const d = doc.data();
               if (d.playerId && d.rank) {

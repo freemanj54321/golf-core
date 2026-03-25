@@ -44,7 +44,7 @@ export const saveWorldRankingsInFirestore = async (rankings: WorldGolfRanking[],
     let operationCount = 0;
 
     for (const ranking of rankings) {
-        const docRef = collectionRef.doc(ranking.playerId);
+        const docRef = collectionRef.doc(`${year}-${ranking.playerId}`);
         batch.set(docRef, { ...ranking, year, lastUpdated: new Date() }, { merge: true });
         operationCount++;
         if (operationCount >= 450) {

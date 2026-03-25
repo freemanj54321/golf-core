@@ -32,7 +32,9 @@ export const fetchAvailableGolfers = async (db: Firestore, year?: number, tourna
     }
 
     const rankingsRef = collection(db, 'golf-rankings');
-    const rankingsSnapshot = await getDocs(query(rankingsRef));
+    const rankingsSnapshot = year
+      ? await getDocs(query(rankingsRef, where('year', '==', year)))
+      : await getDocs(query(rankingsRef));
 
     const rankMap = new Map<string, number>();
     rankingsSnapshot.docs.forEach(doc => {
